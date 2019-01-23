@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/button/button';
+import * as actions from '../../store/actions/index';
+import { connect } from 'react-redux';
+import axios from '../../axios-firebase';
+
 
 class Info extends Component{
 
@@ -76,10 +80,19 @@ class Info extends Component{
         }
 
         const data = {
-             formData
+            bio: formData,  
         }
 
-        console.log(data);
+        // axios.post('/info.json', data)
+        //     .then(repsonse => {
+        //         console.log(repsonse.data);
+        //         //dispatch(SumbitInfoSuccess(response.data, data))
+        //     })
+        //     .catch(err => {
+        //         //dispatch(SubmitInfoFail(err));
+        //     });
+
+        this.props.onSubmitForm(data);
     }
 
     render(){
@@ -117,4 +130,16 @@ class Info extends Component{
     }
 }
 
-export default Info;
+const mapStateToProps = state => {
+    return{
+
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSubmitForm: (data) => dispatch(actions.SubmitInfo(data))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Info);
