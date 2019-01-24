@@ -8,6 +8,10 @@ import axios from '../../axios-firebase';
 
 class Info extends Component{
 
+    componentDidMount(){
+        this.props.onInitInfo();
+    }
+
     state = {
         infoForm: {
             name: {
@@ -91,6 +95,7 @@ class Info extends Component{
         //     .catch(err => {
         //         //dispatch(SubmitInfoFail(err));
         //     });
+        
 
         this.props.onSubmitForm(data);
     }
@@ -104,6 +109,11 @@ class Info extends Component{
                 config: this.state.infoForm[info]
             });
         }
+        
+        let bio = null;
+        for(let info in this.props.info.data){
+          bio = info;          
+        } 
 
         let form = (
             <form onSubmit={this.submitForm}>
@@ -121,10 +131,13 @@ class Info extends Component{
             </form>
         )
 
+        
+
         return(
             <div>
                 <h3>Enter the information for home page</h3>
                 {form}
+                {bio}
             </div>
         )
     }
@@ -132,13 +145,15 @@ class Info extends Component{
 
 const mapStateToProps = state => {
     return{
-
+        info: state.info.info,
+        loading: state.info.loading
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmitForm: (data) => dispatch(actions.SubmitInfo(data))
+        onSubmitForm: (data) => dispatch(actions.SubmitInfo(data)),
+        onInitInfo: () => dispatch(actions.initInfo())
     }
 }
 

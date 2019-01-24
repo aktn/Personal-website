@@ -28,6 +28,33 @@ export const InfoInit = () => {
     }
 }
 
+
+export const fetchInfoSuccess = (info) => {
+    return {
+        type: actionTypes.FETCH_INFO_SUCCESS,
+        info: info
+    }
+}
+
+export const fetchInfoFail = (err) => {
+    return {
+        type: actionTypes.FETCH_INFO_FAIL,
+        err: err
+    }
+}
+
+export const initInfo = () => {
+    return dispatch => {
+        axios.get('/info.json')
+            .then(response => {
+                dispatch(fetchInfoSuccess(response));
+            })
+            .catch(error => {
+                dispatch(fetchInfoFail(error));
+            });
+    }
+}
+
 export const SubmitInfo = (data) => {
     return dispatch => {
         dispatch(SubmitInfoStart());
