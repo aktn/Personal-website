@@ -4,26 +4,34 @@ import Button from '../../components/UI/button/button';
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 import axios from '../../axios-firebase';
+import firebase from '../../firebase';
 
 
 class Info extends Component{
-
+    
     componentDidMount(){
         this.props.onInitInfo();
     }
 
+    componentWillReceiveProps = (nextProps) => {
+        this.setState({
+            title: nextProps.title,
+
+        })
+    }
+
     state = {
         infoForm: {
-            name: {
+            title: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
                     placeholder: 'Title'
                 },
-                value: '',
+                value: this.props.title ? this.props.title : '',
                 valid: false,
                 touched: false,
-                validation: {
+                validation: { 
                     required: true
                 },
             },
@@ -97,7 +105,7 @@ class Info extends Component{
         //     });
         
 
-        this.props.onSubmitForm(data);
+        this.props.onSubmitForm(formData);
     }
 
     render(){
@@ -110,10 +118,11 @@ class Info extends Component{
             });
         }
         
-        let bio = null;
-        for(let info in this.props.info.data){
-          bio = info;          
-        } 
+        // let bio = null;
+        // for(let info in this.props.title){
+        //   bio = info;          
+        // } 
+        console.log(this.props.title);
 
         let form = (
             <form onSubmit={this.submitForm}>
@@ -137,15 +146,16 @@ class Info extends Component{
             <div>
                 <h3>Enter the information for home page</h3>
                 {form}
-                {bio}
+               
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
+    console.log(props);
     return{
-        info: state.info.info,
+        title: state.info.title,
         loading: state.info.loading
     }
 }

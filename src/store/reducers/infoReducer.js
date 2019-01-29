@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    info: [],
+    title: null,
+    description: null,
     loading: false,
 }
 
@@ -13,9 +14,11 @@ const reducer = (state = initialState, action) => {
                 loading: true
             };
         case actionTypes.FETCH_INFO_SUCCESS: 
+            console.log(action.info.data[0])
             return {
                 ...state,
-                info: action.info,
+                title: action.info[0].info.title,
+                description: action.info.description,
                 loading: false
             };
         case actionTypes.FETCH_INFO_FAIL:

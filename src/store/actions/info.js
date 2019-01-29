@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-firebase';
-
+import firebase from '../../firebase';
 
 export const SumbitInfoSuccess = (data) => {
     return {
@@ -53,6 +53,27 @@ export const initInfo = () => {
                 dispatch(fetchInfoFail(error));
             });
     }
+
+    // return dispatch => {
+    //     const infoRef = firebase.database().ref('info');
+    //     infoRef.on('value', (snapshot) => {
+    //         let items = snapshot.val();
+    //         let newState = [];
+
+    //         for(let info in items){
+    //             newState.push({
+    //                 info: {
+    //                     id: info,
+    //                     title: items[info].title,
+    //                     description: items[info].description
+    //                 },
+    //                 loading: false
+    //             })
+    //         }
+
+    //         dispatch(fetchInfoSuccess(newState));
+    //     })
+    // }
 }
 
 export const SubmitInfo = (data) => {
