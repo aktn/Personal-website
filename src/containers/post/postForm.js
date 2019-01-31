@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import Input from "../../components/UI/Input/Input";
+import { savePost } from "../../store/actions/post";
 
 class PostForm extends React.Component {
   state = {
@@ -44,15 +45,7 @@ class PostForm extends React.Component {
 
       this.setState({ loading: true });
       console.log(title);
-      this.props
-        .savePost({ title, body })
-        .then(
-          () => this.setState({ done: true }),
-          err =>
-            err.response
-              .json()
-              .then(({ errors }) => this.setState({ errors, loading: false }))
-        );
+      this.props.savePost({ title, body });
     }
   };
 
@@ -104,5 +97,5 @@ function mapStateToProps(state, props) {
 
 export default connect(
   mapStateToProps,
-  {}
+  { savePost }
 )(PostForm);
