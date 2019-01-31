@@ -82,7 +82,7 @@ export const SubmitInfo = data => {
     axios
       .post("/info.json", data)
       .then(repsonse => {
-        console.log(repsonse.post);
+        console.log(repsonse.data);
         //dispatch(SumbitInfoSuccess(response.data, data))
       })
       .catch(err => {
