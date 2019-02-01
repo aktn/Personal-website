@@ -1,26 +1,27 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  title: null,
-  body: null,
+  post: [],
   loading: false
 };
 
 export default function posts(state = initialState, action = {}) {
   switch (action.type) {
     case actionTypes.ADD_POST:
-      return {
-        ...state,
+      const newPost = {
         title: action.title,
         body: action.body
+      };
+      return {
+        ...state,
+        post: state.post.concat(newPost),
+        loading: false
       };
     case actionTypes.POST_FETCHED:
       return [...state, action.post];
     case actionTypes.SET_POSTS:
-      console.log("set");
       return action.posts;
     default:
-      console.log("def");
       return state;
   }
 }
