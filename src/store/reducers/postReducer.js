@@ -9,12 +9,18 @@ const initialState = {
 export default function posts(state = initialState, action = {}) {
   switch (action.type) {
     case actionTypes.ADD_POST:
-      return [...state, action.post];
+      return {
+        ...state,
+        title: action.title,
+        body: action.body
+      };
     case actionTypes.POST_FETCHED:
       return [...state, action.post];
     case actionTypes.SET_POSTS:
-      return [...state, action.post];
+      console.log("set");
+      return action.posts;
     default:
+      console.log("def");
       return state;
   }
 }

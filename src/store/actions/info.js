@@ -47,6 +47,7 @@ export const initInfo = () => {
     axios
       .get("/info.json")
       .then(response => {
+        console.log(response);
         dispatch(fetchInfoSuccess(response));
       })
       .catch(error => {

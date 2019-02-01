@@ -14,7 +14,11 @@ class PostForm extends React.Component {
     done: false
   };
 
-  componentDidMount = () => {};
+  componentDidMount = () => {
+    // if (this.props.match.params.id) {
+    //   this.props.onFetchPost();
+    // }
+  };
 
   handleChange = e => {
     if (!!this.state.errors[e.target.name]) {
@@ -86,11 +90,12 @@ class PostForm extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  //   if (props.params._id) {
-  //     return {
-  //       // post: state.posts.find(post => post_id === props.params_id)
-  //     };
-  //   }
+  console.log(state);
+  // if (props.match.params.id) {
+  //   return {
+  //     onFetchPost: state.posts.find(post => post.id === props.match.params.id)
+  //   };
+  // }
 
   return { post: null };
 }
