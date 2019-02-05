@@ -13,6 +13,7 @@ class App extends Component {
           <Route path="/post/new" component={PostForm} />
           <Route path="/post/posts" component={PostsList} />
           <Route path="/post/:id" component={PostForm} />
+          <Route path="/info/:id" component={Info} />
         </Switch>
       </div>
     );

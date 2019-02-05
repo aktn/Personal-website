@@ -3,19 +3,25 @@ import Input from "../../components/UI/Input/Input";
 import Button from "../../components/UI/button/button";
 import * as actions from "../../store/actions/index";
 import { connect } from "react-redux";
-import axios from "../../axios-firebase";
-import firebase from "../../firebase";
 
 class Info extends Component {
-  componentDidMount() {
-    this.props.onInitInfo();
-  }
-
   componentWillReceiveProps = nextProps => {
     this.setState({
-      title: nextProps.title
+      infoForm: {
+        title: {
+          value: nextProps.info.title
+        },
+        description: {
+          value: nextProps.info.description
+        }
+      }
     });
+    // console.log(nextProps.info.title);
   };
+
+  componentDidMount() {
+    this.props.onInitInfo(this.props.match.params.id);
+  }
 
   state = {
     infoForm: {
@@ -25,7 +31,7 @@ class Info extends Component {
           type: "text",
           placeholder: "Title"
         },
-        value: this.props.title ? this.props.title : "",
+        value: this.props.info ? this.props.info.title : "",
         valid: false,
         touched: false,
         validation: {
@@ -93,15 +99,6 @@ class Info extends Component {
       bio: formData
     };
 
-    // axios.post('/info.json', data)
-    //     .then(repsonse => {
-    //         console.log(repsonse.data);
-    //         //dispatch(SumbitInfoSuccess(response.data, data))
-    //     })
-    //     .catch(err => {
-    //         //dispatch(SubmitInfoFail(err));
-    //     });
-
     this.props.onSubmitForm(formData);
   };
 
@@ -114,12 +111,6 @@ class Info extends Component {
         config: this.state.infoForm[info]
       });
     }
-
-    // let bio = null;
-    // for(let info in this.props.title){
-    //   bio = info;
-    // }
-    console.log(this.props.title);
 
     let form = (
       <form onSubmit={this.submitForm}>
@@ -135,7 +126,7 @@ class Info extends Component {
             shouldValidate={formElement.config.validation}
           />
         ))}
-        <Button disabled={!this.state.formIsValid}>Submit</Button>
+        <Button disabled={!this.state.formIsValid}>Update</Button>
       </form>
     );
 
@@ -149,17 +140,18 @@ class Info extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(props);
-  return {
-    title: state.info.title,
-    loading: state.info.loading
-  };
+  if (props.match.params.id) {
+    return {
+      info: state.info.info,
+      loading: state.info.loading
+    };
+  }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onSubmitForm: data => dispatch(actions.SubmitInfo(data)),
-    onInitInfo: () => dispatch(actions.initInfo())
+    onInitInfo: id => dispatch(actions.fetchInfo(id))
   };
 };
 

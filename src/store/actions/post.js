@@ -25,9 +25,14 @@ export function postFetched(post) {
 
 export function savePost(data) {
   return dispatch => {
-    axios.post("/post.json", data).then(repsonse => {
-      dispatch(addPost(repsonse.post));
-    });
+    axios
+      .post("/post.json", data)
+      .then(repsonse => {
+        dispatch(addPost(repsonse.post));
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 }
 
@@ -48,24 +53,18 @@ export const fetchPosts = () => {
       })
       .catch(error => {
         //dispatch(fetchInfoFail(error));
+        console.log(error);
       });
-    // return dispatch => {
-    //   const infoRef = firebase.database().ref("post");
-    //   infoRef.on("value", snapshot => {
-    //     let items = snapshot.val();
-    //     let newState = [];
-    //     console.log(infoRef);
-
-    //     //dispatch(fetchInfoSuccess(newState));
-    //   });
-    // };
   };
 };
 
-// export function fetchPost(id) {
-//   return dispatch => {
-//     axios.get(`/post/${id}.json`).then(response => {
-//       dispatch(postFetched(response));
-//     });
-//   };
-// }
+export function fetchPost(id) {
+  return dispatch => {
+    axios
+      .get(`/post/${id}.json`)
+      //.then(response => response.json())
+      .then(response => {
+        dispatch(postFetched(response.data));
+      });
+  };
+}

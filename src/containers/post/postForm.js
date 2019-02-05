@@ -3,21 +3,30 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import Input from "../../components/UI/Input/Input";
 import { savePost } from "../../store/actions/post";
+import * as actions from "../../store/actions/index";
 
 class PostForm extends React.Component {
   state = {
-    _id: this.props.post ? this.props.post._id : null,
+    id: this.props.post ? this.props.post.id : "",
     title: this.props.post ? this.props.post.title : "",
     body: this.props.post ? this.props.post.body : "",
-    errors: {},
+    errors: [""],
     loading: false,
     done: false
   };
 
+  componentWillReceiveProps = nextProps => {
+    this.setState({
+      id: nextProps.post.id,
+      title: nextProps.post.title,
+      body: nextProps.post.body
+    });
+  };
+
   componentDidMount = () => {
-    // if (this.props.match.params.id) {
-    //   this.props.onFetchPost();
-    // }
+    if (this.props.match.params.id) {
+      this.props.onFetchPost(this.props.match.params.id);
+    }
   };
 
   handleChange = e => {
@@ -48,7 +57,7 @@ class PostForm extends React.Component {
       const { title, body } = this.state;
 
       this.setState({ loading: true });
-      console.log(title);
+
       this.props.savePost({ title, body });
     }
   };
@@ -90,17 +99,23 @@ class PostForm extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  console.log(state);
-  // if (props.match.params.id) {
-  //   return {
-  //     onFetchPost: state.posts.find(post => post.id === props.match.params.id)
-  //   };
-  // }
+  if (props.match.params.id) {
+    return {
+      post: state.post.post
+    };
+  }
 
   return { post: null };
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchPost: id => dispatch(actions.fetchPost(id)),
+    savePost: (title, body) => dispatch(actions.savePost(title, body))
+  };
+};
+
 export default connect(
   mapStateToProps,
-  { savePost }
+  mapDispatchToProps
 )(PostForm);

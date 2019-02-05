@@ -1,6 +1,5 @@
 import * as actionTypes from "./actionTypes";
 import axios from "../../axios-firebase";
-import firebase from "../../firebase";
 
 export const SumbitInfoSuccess = data => {
   return {
@@ -47,8 +46,7 @@ export const initInfo = () => {
     axios
       .get("/info.json")
       .then(response => {
-        console.log(response);
-        dispatch(fetchInfoSuccess(response));
+        dispatch(fetchInfoSuccess(response.data));
       })
       .catch(error => {
         dispatch(fetchInfoFail(error));
@@ -91,3 +89,11 @@ export const SubmitInfo = data => {
       });
   };
 };
+
+export function fetchInfo(id) {
+  return dispatch => {
+    axios.get(`/info/${id}.json`).then(response => {
+      dispatch(fetchInfoSuccess(response.data));
+    });
+  };
+}
