@@ -95,10 +95,6 @@ class Info extends Component {
       formData[data] = this.state.infoForm[data].value;
     }
 
-    const data = {
-      bio: formData
-    };
-
     this.props.onSubmitForm(formData);
   };
 
