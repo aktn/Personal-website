@@ -1,59 +1,68 @@
+$font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+
 .home-info {
   background: linear-gradient(-116deg, #5598d8 5%, #47689e);
-  min-height: 1000px;
-  height: 100%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   color: #fafafa;
-  box-shadow: 0 10px 100px rgba(0, 0, 0, 0.8),
-    0 40px 20px -20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 100px #000000cc, 0 40px 20px -20px rgba(0, 0, 0, 0.2);
+  position: absolute;
 
   &__social {
     font-size: 30px;
+    overflow: hidden;
     a {
       color: #fafafa;
       float: left;
       margin: 30px 0 0 20px;
+      display: block;
     }
   }
 
   &__title {
-    font-size: 35px;
+    font-size: 45px;
     font-weight: 800;
     padding-top: 30vh;
     margin: 0 auto;
-    width: 400px;
+    width: 45%;
   }
 
   &__description {
     font-size: 20px;
-    width: 400px;
+    width: 50%;
     margin: 0 auto;
     padding-top: 30vh;
   }
 
   &__scroll {
     font-size: 16px;
-    padding-top: 12vh;
+    padding-top: 9vh;
+    padding-bottom: 30px;
   }
 }
 
 .home-project {
   background: #fafafa;
-  min-height: 1080px;
   height: 100%;
   margin-top: 30px;
-
-  &__container:after {
-    background: #47689e;
-    margin-right: 10vh;
+  overflow: hidden;
+  padding-bottom: 150px;
+  &__container {
+    margin: 0.5vh 25vh;
+    // margin-left: 20vh;
+    width: 70%;
+    font-family: $font-style1;
   }
   color: #232323;
 }
 
 .column {
   float: left;
-  width: 45%;
+  width: 50%;
+  padding-right: 85px;
   text-align: left;
+  //margin: 0 auto;
 
   &__title {
     color: #68f373;
@@ -65,9 +74,21 @@
   }
 }
 
+.home-footer {
+  background: linear-gradient(-116deg, #5598d8 5%, #47689e);
+  width: 100%;
+  &__text {
+    p {
+      font-size: 16px;
+      padding: 20px;
+      font-family: $font-style1;
+    }
+  }
+}
+
 h3 {
   text-align: left;
-  // padding-top: 10vh;
-  // padding-left: 40vh;
+  display: block;
+  padding: 3vh 0;
   font-size: 20px;
 }

@@ -39,7 +39,8 @@ class Home extends Component {
             <div className="column">
               <div className="column__title">Project</div>
               <div className="column__description">
-                Babel is a compiler for writing next generation JavaScript
+                Babel is a compiler for writing next generation JavaScript Babel
+                is a compiler for writing next generation JavaScript
               </div>
             </div>
             <div className="column">
@@ -48,6 +49,12 @@ class Home extends Component {
                 Babel is a compiler for writing next generation JavaScript
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="home-footer">
+          <div class="home-footer__text">
+            <p>Contact</p>
           </div>
         </div>
       </div>
