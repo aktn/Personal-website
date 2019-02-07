@@ -9,10 +9,12 @@ import { Provider } from "react-redux";
 import infoReducer from "./store/reducers/infoReducer";
 import thunk from "redux-thunk";
 import postReducer from "./store/reducers/postReducer";
+import projectReducer from "./store/reducers/projectReducer";
 
 const rootReducer = combineReducers({
   info: infoReducer,
-  post: postReducer
+  post: postReducer,
+  project: projectReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

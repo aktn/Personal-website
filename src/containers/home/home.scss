@@ -46,13 +46,13 @@ $font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   background: #fafafa;
   height: 100%;
   margin-top: 30px;
-  overflow: hidden;
   padding-bottom: 150px;
   &__container {
-    margin: 0.5vh 25vh;
-    // margin-left: 20vh;
+    display: table;
+    margin: 0 auto;
     width: 70%;
     font-family: $font-style1;
+    overflow: hidden;
   }
   color: #232323;
 }
@@ -88,7 +88,43 @@ $font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 
 h3 {
   text-align: left;
-  display: block;
+  display: tabl;
   padding: 3vh 0;
   font-size: 20px;
+}
+@media (min-width: 300px) and (max-width: 400px) {
+  .home-info {
+    &__title {
+      font-size: 25px;
+      padding-top: 25vh;
+    }
+    &__description {
+      font-size: 16px;
+      padding-top: 20vh;
+    }
+  }
+  .column {
+    float: none;
+    width: 100%;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 500px) {
+  .home-info {
+    &__title {
+      font-size: 28px;
+      padding-top: 30vh;
+    }
+    &__description {
+      font-size: 18px;
+      padding-top: 20vh;
+    }
+    &__scroll {
+      padding-bottom: 1vh;
+    }
+  }
+  .column {
+    float: none;
+    width: 100%;
+  }
 }

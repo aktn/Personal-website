@@ -2,17 +2,28 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import "./home.scss";
+import Project from "./../../components/project/project";
 
 class Home extends Component {
   componentDidMount() {
     this.props.onInitInfo(this.props.match.params.id);
+    this.props.onInitProject();
   }
 
   render() {
     const scrollPointer = {
-      "font-size": "22px",
-      "padding-right": "10px"
+      fontSize: "22px",
+      paddingRight: "10px"
     };
+
+    const projects = this.props.project;
+
+    const projectsList = projects.map(project => (
+      <div className="column" key={project.id}>
+        <div className="column__title">{project.title}</div>
+        <div className="column__description">{project.description}</div>
+      </div>
+    ));
 
     return (
       <div className="home-info">
@@ -36,24 +47,12 @@ class Home extends Component {
         <div className="home-project">
           <div className="home-project__container">
             <h3>Stuff I have been building</h3>
-            <div className="column">
-              <div className="column__title">Project</div>
-              <div className="column__description">
-                Babel is a compiler for writing next generation JavaScript Babel
-                is a compiler for writing next generation JavaScript
-              </div>
-            </div>
-            <div className="column">
-              <div className="column__title">Project</div>
-              <div className="column__description">
-                Babel is a compiler for writing next generation JavaScript
-              </div>
-            </div>
+            {projectsList}
           </div>
         </div>
 
         <div className="home-footer">
-          <div class="home-footer__text">
+          <div className="home-footer__text">
             <p>Contact</p>
           </div>
         </div>
@@ -65,14 +64,15 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
     info: state.info.info,
-    // project: state.project.project,
+    project: state.project.project,
     post: state.post.post
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitInfo: () => dispatch(actions.fetchInfo("-LX1bWcQJbBAAAgieK3U"))
+    onInitInfo: () => dispatch(actions.fetchInfo("-LX1bWcQJbBAAAgieK3U")),
+    onInitProject: () => dispatch(actions.fetchProjects())
   };
 };
 
