@@ -8,6 +8,13 @@ export const setProjects = projects => {
   };
 };
 
+export const addProject = project => {
+  return {
+    type: actionTypes.ADD_PROJECT,
+    project
+  };
+};
+
 export const fetchProjects = () => {
   return dispatch => {
     axios.get("/project.json").then(response => {
@@ -20,5 +27,18 @@ export const fetchProjects = () => {
       }
       dispatch(setProjects(projects));
     });
+  };
+};
+
+export const saveProject = data => {
+  return dispatch => {
+    axios
+      .post("/project.json", data)
+      .then(repsonse => {
+        dispatch(addProject(repsonse.project));
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 };

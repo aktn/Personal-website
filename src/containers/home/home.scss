@@ -50,7 +50,7 @@ $font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   &__container {
     display: table;
     margin: 0 auto;
-    width: 70%;
+    width: 75%;
     font-family: $font-style1;
     overflow: hidden;
   }
@@ -60,13 +60,16 @@ $font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 .column {
   float: left;
   width: 50%;
-  padding-right: 85px;
+  //padding-right: 85px;
   text-align: left;
+  //background: #47689e;
+
   //margin: 0 auto;
 
   &__title {
     color: #68f373;
     font-size: 20px;
+    padding-bottom: 2vh;
   }
   &__description {
     color: #232323;
@@ -89,18 +92,22 @@ $font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 h3 {
   text-align: left;
   display: tabl;
-  padding: 3vh 0;
+  padding: 5vh 0;
   font-size: 20px;
 }
 @media (min-width: 300px) and (max-width: 400px) {
   .home-info {
     &__title {
       font-size: 25px;
-      padding-top: 25vh;
+      padding-top: 20vh;
     }
     &__description {
       font-size: 16px;
-      padding-top: 20vh;
+      padding-top: 18vh;
+    }
+    &__scroll {
+      padding-top: 4vh;
+      padding-bottom: 3vh;
     }
   }
   .column {
@@ -109,7 +116,7 @@ h3 {
   }
 }
 
-@media (min-width: 401px) and (max-width: 500px) {
+@media (min-width: 401px) and (max-width: 700px) {
   .home-info {
     &__title {
       font-size: 28px;
@@ -126,5 +133,23 @@ h3 {
   .column {
     float: none;
     width: 100%;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+  .home-info {
+    &__title {
+      font-size: 33px;
+      padding-top: 35vh;
+    }
+    &__description {
+      font-size: 18px;
+      padding-top: 26vh;
+    }
+    &__scroll {
+      //   padding-bottom: 5vh;
+    }
+  }
+  .column {
   }
 }
