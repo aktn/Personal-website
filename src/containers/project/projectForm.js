@@ -37,6 +37,18 @@ class ProjectForm extends Component {
     formIsValid: false
   };
 
+  checkValidity(value, rules) {
+    if (!rules) return true;
+
+    let isValid = true;
+
+    if (rules.required) {
+      isValid = value.trim() !== "" && isValid;
+    }
+
+    return isValid;
+  }
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -58,10 +70,19 @@ class ProjectForm extends Component {
     const updatedFormElement = { ...projectForm[inputIdentifier] };
 
     updatedFormElement.value = event.target.value;
+    updatedFormElement.valid = this.checkValidity(
+      event.target.value,
+      updatedFormElement.validation
+    );
     updatedFormElement.touched = true;
     projectForm[inputIdentifier] = updatedFormElement;
 
-    this.setState({ projectForm, formIsValid: true });
+    let formIsValid = true;
+    for (let inputIdentifier in projectForm) {
+      formIsValid = projectForm[inputIdentifier].valid && formIsValid;
+    }
+
+    this.setState({ projectForm, formIsValid });
   };
 
   render() {
