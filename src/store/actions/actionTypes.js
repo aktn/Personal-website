@@ -14,3 +14,4 @@ export const POST_FETCHED = "POST_FETCHED";
 export const SET_PROJECTS = "SET_PROJECTS";
 export const ADD_PROJECT = "ADD_PROJECT";
 export const PROJECT_FETCHED = "PROJECT_FETCHED";
+export const UPDATE_PROJECT = "UPDATE_PROJECT";

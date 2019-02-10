@@ -1,0 +1,24 @@
+.input {
+  font-size: 16px;
+  outline: 0;
+  padding: 10px 40px 10px 15px;
+  margin: 0;
+  width: 50%;
+  color: #545e6f;
+  background: rgb(253, 252, 252);
+  flex-grow: 1;
+  border: 1px solid #d1deeb;
+  transition: all 0.2s ease-in-out;
+  border-radius: 3px;
+}
+
+.error {
+  color: #a94442;
+  background: #f2dede;
+  border: 1px solid #e4b3b3;
+  border-radius: 2px;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 10px 0 0;
+}

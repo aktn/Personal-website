@@ -15,6 +15,20 @@ export const addProject = project => {
   };
 };
 
+export const getProject = project => {
+  return {
+    type: actionTypes.PROJECT_FETCHED,
+    project
+  };
+};
+
+export const editProject = project => {
+  return {
+    type: actionTypes.UPDATE_PROJECT,
+    project
+  };
+};
+
 export const fetchProjects = () => {
   return dispatch => {
     axios.get("/project.json").then(response => {
@@ -36,6 +50,28 @@ export const saveProject = data => {
       .post("/project.json", data)
       .then(repsonse => {
         dispatch(addProject(repsonse.project));
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+};
+
+export const fetchProject = id => {
+  return dispatch => {
+    axios.get(`/project/${id}.json`).then(response => {
+      dispatch(getProject(response.data));
+    });
+  };
+};
+
+export const updateProject = (id, data) => {
+  return dispatch => {
+    axios
+      .put(`/project/${id}.json`, data)
+      .then(response => {
+        console.log(response.data);
+        dispatch(editProject(response.data));
       })
       .catch(error => {
         console.log(error);

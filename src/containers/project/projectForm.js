@@ -5,6 +5,25 @@ import Button from "./../../components/UI/button/button";
 import Input from "./../../components/UI/Input/Input";
 
 class ProjectForm extends Component {
+  componentDidMount() {
+    if (this.props.match.params.id) {
+      this.props.onFetchProject(this.props.match.params.id);
+    }
+  }
+
+  componentWillReceiveProps = nextProps => {
+    this.setState({
+      projectForm: {
+        title: {
+          value: nextProps.project.title
+        },
+        description: {
+          value: nextProps.project.description
+        }
+      }
+    });
+  };
+
   state = {
     projectForm: {
       title: {
@@ -13,7 +32,7 @@ class ProjectForm extends Component {
           type: "text",
           placeholder: "Title"
         },
-        value: "",
+        value: this.props.project ? this.props.project.title : "",
         valid: false,
         touched: false,
         validation: {
@@ -23,14 +42,27 @@ class ProjectForm extends Component {
       description: {
         elementType: "input",
         elementConfig: {
-          type: "text",
+          type: "textarea",
           placeholder: "Description"
         },
-        value: "",
+        value: this.props.project ? this.props.project.description : "",
         valid: false,
         touched: false,
         validation: {
           required: true
+        }
+      },
+      url: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "URL"
+        },
+        value: this.props.project ? this.props.project.url : "",
+        touched: false,
+        valid: false,
+        validation: {
+          required: false
         }
       }
     },
@@ -53,16 +85,15 @@ class ProjectForm extends Component {
     e.preventDefault();
 
     let errors = {};
-    // if (this.state.title === "") errors.title = "Title is empty";
-    // if (this.state.description === "")
-    //   errorr.description = "Description is empty";
-    // this.setState({ errors });
-
-    //const isValid = Object.keys(errors).length === 0;
 
     const title = this.state.projectForm.title.value;
     const description = this.state.projectForm.description.value;
-    this.props.saveProject({ title, description });
+    if (this.props.match.params.id) {
+      const id = this.props.match.params.id;
+      this.props.updateProject(id, { title, description });
+    } else {
+      this.props.saveProject({ title, description });
+    }
   };
 
   handleInputChange = (event, inputIdentifier) => {
@@ -94,6 +125,12 @@ class ProjectForm extends Component {
       });
     }
 
+    let checkExisting = this.props.match.params.id;
+    let buttonLabel = <Button disabled={!this.state.formIsValid}>Post</Button>;
+    if (checkExisting) {
+      buttonLabel = <Button disabled={!this.state.formIsValid}>Update</Button>;
+    }
+
     let form = (
       <form onSubmit={this.handleSubmit}>
         {formElements.map(formElement => (
@@ -108,7 +145,7 @@ class ProjectForm extends Component {
             shouldValidate={formElement.config.validation}
           />
         ))}
-        <Button disabled={!this.state.formIsValid}>Save</Button>
+        {buttonLabel}
       </form>
     );
 
@@ -121,15 +158,19 @@ class ProjectForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    project: state.project.project
-  };
+const mapStateToProps = (state, props) => {
+  if (props.match.params.id) {
+    return {
+      project: state.project.project
+    };
+  }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    saveProject: projectData => dispatch(actions.saveProject(projectData))
+    saveProject: projectData => dispatch(actions.saveProject(projectData)),
+    onFetchProject: id => dispatch(actions.fetchProject(id)),
+    updateProject: (id, data) => dispatch(actions.updateProject(id, data))
   };
 };
 
