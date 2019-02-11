@@ -15,3 +15,8 @@ export const SET_PROJECTS = "SET_PROJECTS";
 export const ADD_PROJECT = "ADD_PROJECT";
 export const PROJECT_FETCHED = "PROJECT_FETCHED";
 export const UPDATE_PROJECT = "UPDATE_PROJECT";
+
+export const AUTH_START = "AUTH_STRAT";
+export const AUTH_FAIL = "AUTH_FAIL";
+export const AUTH_LOGOUT = "AUHT_LOGOUT";
+export const AUTH_SUCCESS = "AUTH_SUCESS";

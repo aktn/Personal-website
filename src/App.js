@@ -6,6 +6,7 @@ import PostsList from "./containers/post/postsList";
 import { Route, Switch } from "react-router-dom";
 import Home from "./containers/home/home";
 import ProjectForm from "./containers/project/projectForm";
+import Login from "./containers/login/login";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Route path="/info/:id" component={Info} />
           <Route path="/project/new" component={ProjectForm} />
           <Route path="/project/:id" component={ProjectForm} />
+          <Route path="/login" component={Login} />
           <Route path="/" component={Home} />
         </Switch>
       </div>
