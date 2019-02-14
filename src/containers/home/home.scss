@@ -3,12 +3,14 @@ $font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 .home-info {
   background: linear-gradient(-116deg, #5598d8 5%, #47689e);
   width: 100%;
+  height: auto;
   margin: 0;
   padding: 0;
   color: #fafafa;
   box-shadow: 0 10px 100px #000000cc, 0 40px 20px -20px rgba(0, 0, 0, 0.2);
   position: absolute;
 
+  margin-bottom: 0px;
   &__social {
     font-size: 30px;
     overflow: hidden;
@@ -32,7 +34,7 @@ $font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
     font-size: 20px;
     width: 50%;
     margin: 0 auto;
-    padding-top: 30vh;
+    padding-top: 25vh;
   }
 
   &__scroll {
@@ -67,26 +69,17 @@ $font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   //margin: 0 auto;
 
   &__title {
-    color: #68f373;
+    color: #5598d8;
     font-size: 20px;
-    padding-bottom: 2vh;
+    padding-bottom: 3vh;
+    cursor: pointer;
   }
   &__description {
     color: #232323;
-    font-size: 14px;
-    padding-bottom: 4vh;
-  }
-}
-
-.home-footer {
-  background: linear-gradient(-116deg, #5598d8 5%, #47689e);
-  width: 100%;
-  &__text {
-    p {
-      font-size: 16px;
-      padding: 20px;
-      font-family: $font-style1;
-    }
+    font-size: 18px;
+    padding-bottom: 5vh;
+    letter-spacing: 0.2vh;
+    line-height: 150%;
   }
 }
 
@@ -156,7 +149,7 @@ h5 {
       padding-top: 26vh;
     }
     &__scroll {
-      //   padding-bottom: 5vh;
+      // padding-bottom: 5vh;
     }
   }
   .column {

@@ -5,9 +5,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "firebase": "^5.8.0",
+    "heroku": "^7.21.0",
     "node-sass": "^4.11.0",
     "preact": "^8.4.2",
-    "preact-cli": "^2.2.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
@@ -15,6 +15,9 @@
     "react-scripts": "2.1.3",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "preact-cli": "^2.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

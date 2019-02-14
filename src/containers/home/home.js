@@ -47,14 +47,11 @@ class Home extends Component {
         <div className="home-project">
           <div className="home-project__container">
             <h3>Main projects I have been building</h3>
-            <h5>Other work can be found on Github.</h5>
             {projectsList}
-          </div>
-        </div>
-
-        <div className="home-footer">
-          <div className="home-footer__text">
-            <p>Contact</p>
+            <h5>
+              Other work can be found on{" "}
+              <a href="https://github.com/aktn">Github</a>.
+            </h5>
           </div>
         </div>
       </div>
