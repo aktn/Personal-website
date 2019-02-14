@@ -59,7 +59,7 @@ $font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 
 .column {
   float: left;
-  width: 50%;
+  width: 100%;
   //padding-right: 85px;
   text-align: left;
   //background: #47689e;
@@ -74,6 +74,7 @@ $font-style1: Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   &__description {
     color: #232323;
     font-size: 14px;
+    padding-bottom: 4vh;
   }
 }
 
@@ -95,6 +96,14 @@ h3 {
   padding: 5vh 0;
   font-size: 20px;
 }
+
+h5 {
+  text-align: left;
+  display: tabl;
+  padding-bottom: 3vh;
+  font-size: 16px;
+}
+
 @media (min-width: 300px) and (max-width: 400px) {
   .home-info {
     &__title {

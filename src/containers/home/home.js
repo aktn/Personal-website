@@ -46,7 +46,8 @@ class Home extends Component {
 
         <div className="home-project">
           <div className="home-project__container">
-            <h3>Stuff I have been building</h3>
+            <h3>Main projects I have been building</h3>
+            <h5>Other work can be found on Github.</h5>
             {projectsList}
           </div>
         </div>

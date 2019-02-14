@@ -20,3 +20,4 @@ export const AUTH_START = "AUTH_STRAT";
 export const AUTH_FAIL = "AUTH_FAIL";
 export const AUTH_LOGOUT = "AUHT_LOGOUT";
 export const AUTH_SUCCESS = "AUTH_SUCESS";
+export const AUTH_REDIRECT_PATH = "AUTH_REDIRECT_PATH";
