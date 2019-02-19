@@ -13,6 +13,8 @@ const Input = props => {
     case "textarea":
       inputElement = (
         <textarea
+          rows="10"
+          cols="50"
           className={cssClasses}
           value={props.value}
           onChange={props.changed}

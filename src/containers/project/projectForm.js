@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "./../../store/actions/index";
 import Button from "./../../components/UI/button/button";
 import Input from "./../../components/UI/Input/Input";
+import { auth } from "firebase";
 
 class ProjectForm extends Component {
   componentDidMount() {
@@ -40,9 +41,9 @@ class ProjectForm extends Component {
         }
       },
       description: {
-        elementType: "input",
+        elementType: "textarea",
         elementConfig: {
-          type: "textarea",
+          type: "text",
           placeholder: "Description"
         },
         value: this.props.project ? this.props.project.description : "",
@@ -151,7 +152,7 @@ class ProjectForm extends Component {
 
     return (
       <div>
-        <h3>Project Form</h3>
+        <h3 style={{ textAlign: "center" }}>Project Form</h3>
         {form}
       </div>
     );
