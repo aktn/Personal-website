@@ -11,17 +11,6 @@ class Home extends Component {
   }
 
   render() {
-    const scrollPointer = {
-      fontSize: "22px",
-      paddingRight: "10px"
-    };
-
-    // const aboutTitle = <h2>this.props.info.title</h2>
-    // const aboutDescription = <p>{this.props.info.description}</p>
-
-    // const aboutDescription =
-    //   this.props.info.description.replace("a", "b") || "";
-
     const infoDescription = this.props.info.description;
     const infoTitle = this.props.info.title;
     let aboutMe;

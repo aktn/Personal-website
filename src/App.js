@@ -11,6 +11,7 @@ import Home from "./containers/home/home";
 import ProjectForm from "./containers/project/projectForm";
 import Login from "./containers/login/login";
 import * as actions from "./store/actions/index";
+import Navigation from "./components/navigation/navigation";
 
 class App extends Component {
   componentDidMount() {
@@ -38,7 +39,12 @@ class App extends Component {
         </Switch>
       );
     }
-    return <div className="App">{routes}</div>;
+    return (
+      <div className="App">
+        <Navigation />
+        {routes}
+      </div>
+    );
   }
 }
 

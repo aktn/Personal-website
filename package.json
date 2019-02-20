@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
     "firebase": "^5.8.0",
     "gh-pages": "^2.0.1",
     "heroku": "^7.21.0",
@@ -11,6 +12,7 @@
     "now": "^13.1.3",
     "preact": "^8.4.2",
     "react": "^16.7.0",
+    "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
