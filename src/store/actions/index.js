@@ -6,4 +6,4 @@ export {
   fetchProject,
   updateProject
 } from "./project";
-export { authCheck } from "./auth";
+export { authCheck, authState } from "./auth";

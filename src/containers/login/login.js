@@ -40,14 +40,6 @@ class Login extends Component {
     formIsValid: false
   };
 
-  componentDidMount() {
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        console.log(user);
-      }
-    });
-  }
-
   checkValidity(values, rules) {
     let isValid = true;
 

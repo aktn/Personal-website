@@ -21,6 +21,7 @@ export const authFail = err => {
   };
 };
 
+// Logging in
 export const authCheck = user => {
   return dispatch => {
     auth
@@ -31,5 +32,16 @@ export const authCheck = user => {
       .catch(err => {
         dispatch(authFail(err));
       });
+  };
+};
+
+export const authState = () => {
+  return dispatch => {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        console.log("user logged in");
+        dispatch(authSuccess(user));
+      }
+    });
   };
 };
