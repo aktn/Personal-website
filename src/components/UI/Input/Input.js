@@ -2,9 +2,10 @@ import React from "react";
 import classes from "./Input.scss";
 
 const Input = props => {
-  let cssClasses = "input";
+  let cssClasses = ["input"];
+  // let cssClasses = "input";
   if (props.touched && props.invalid && props.shouldValidate) {
-    cssClasses = "error";
+    cssClasses.push("error");
   }
 
   let inputElement = null;
@@ -25,7 +26,7 @@ const Input = props => {
     default:
       inputElement = (
         <input
-          className={cssClasses}
+          className={cssClasses.join(" ")}
           value={props.value}
           onChange={props.changed}
           {...props.elementConfig}

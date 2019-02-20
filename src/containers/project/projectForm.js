@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actions from "./../../store/actions/index";
 import Button from "./../../components/UI/button/button";
 import Input from "./../../components/UI/Input/Input";
-import { auth } from "firebase";
 
 class ProjectForm extends Component {
   componentDidMount() {
@@ -84,8 +83,6 @@ class ProjectForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    let errors = {};
 
     const title = this.state.projectForm.title.value;
     const description = this.state.projectForm.description.value;

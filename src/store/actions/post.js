@@ -1,6 +1,5 @@
 import axios from "../../axios-firebase";
 import * as actionTypes from "./actionTypes";
-import firebase from "../../firebase";
 
 export const setPosts = posts => {
   return {

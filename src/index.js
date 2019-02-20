@@ -10,11 +10,13 @@ import infoReducer from "./store/reducers/infoReducer";
 import thunk from "redux-thunk";
 import postReducer from "./store/reducers/postReducer";
 import projectReducer from "./store/reducers/projectReducer";
+import authReducer from "./store/reducers/authReducer";
 
 const rootReducer = combineReducers({
   info: infoReducer,
   post: postReducer,
-  project: projectReducer
+  project: projectReducer,
+  user: authReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
