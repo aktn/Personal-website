@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 
 import "./App.css";
 
@@ -34,6 +34,7 @@ class App extends Component {
           <Route path="/info/:id" component={Info} />
           <Route path="/project/new" component={ProjectForm} />
           <Route path="/project/:id" component={ProjectForm} />
+          <Redirect to="/" />
         </Switch>
       );
     }

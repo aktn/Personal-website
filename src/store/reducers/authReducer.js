@@ -1,15 +1,27 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  user: null
+  user: null,
+  error: null
 };
 
 const user = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.AUTH_SUCCESS:
-      console.log(action.user);
       return {
+        ...state,
         user: action.user
+      };
+    case actionTypes.AUTH_LOGOUT:
+      return {
+        ...state,
+        user: null
+      };
+    case actionTypes.AUTH_FAIL:
+      return {
+        ...state,
+        user: null,
+        error: action.err.message
       };
     default:
       return state;

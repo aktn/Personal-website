@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Input from "./../../components/UI/Input/Input";
 import Button from "./../../components/UI/button/button";
 import * as actions from "../../store/actions/index";
-import { auth } from "../../firebase";
 
 class Login extends Component {
   state = {
@@ -114,12 +113,19 @@ class Login extends Component {
       />
     ));
 
+    let errorMessage = null;
+
+    if (this.props.isError) {
+      errorMessage = <h2 style={{ padding: "15px" }}>{this.props.isError}</h2>;
+    }
+
     return (
       <div>
         <h3 style={{ textAlign: "center" }}>Login</h3>
         <form onSubmit={this.handleSubmit}>
           {form}
           <Button disabled={!this.state.formIsValid}>Login</Button>
+          {errorMessage}
         </form>
       </div>
     );
@@ -127,8 +133,9 @@ class Login extends Component {
 }
 
 export const mapStateToProps = state => {
-  console.log(state.user);
-  return {};
+  return {
+    isError: state.user.error
+  };
 };
 
 export const mapDispatchToProps = dispatch => {

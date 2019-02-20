@@ -21,6 +21,12 @@ export const authFail = err => {
   };
 };
 
+export const logout = () => {
+  return {
+    type: actionTypes.AUTH_LOGOUT
+  };
+};
+
 // Logging in
 export const authCheck = user => {
   return dispatch => {
@@ -39,8 +45,9 @@ export const authState = () => {
   return dispatch => {
     auth.onAuthStateChanged(user => {
       if (user) {
-        console.log("user logged in");
         dispatch(authSuccess(user));
+      } else {
+        dispatch(logout());
       }
     });
   };

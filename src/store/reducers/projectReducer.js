@@ -13,14 +13,12 @@ export default function projects(state = initialState, action = {}) {
       };
 
     case actionTypes.PROJECT_FETCHED:
-      console.log(action);
       return {
         ...state,
         project: action.project
       };
 
     case actionTypes.UPDATE_PROJECT:
-      console.log("Edit" + action.project);
       return state.map(project =>
         project.id === action.id
           ? { ...project, project: action.project }
