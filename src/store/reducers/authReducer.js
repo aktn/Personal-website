@@ -13,6 +13,7 @@ const user = (state = initialState, action) => {
         user: action.user
       };
     case actionTypes.AUTH_LOGOUT:
+      console.log("logout");
       return {
         ...state,
         user: null

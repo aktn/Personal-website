@@ -1,8 +1,11 @@
 import Nav from "react-bootstrap/Nav";
 import "./navigation.scss";
 import React from "react";
+import { connect } from "react-redux";
+import { loggingOut } from "./../../store/actions/index";
+import * as actions from "./../../store/actions/index";
 
-const navigation = () => (
+const navigation = ({ dispatch }) => (
   <div className="nav">
     <Nav defaultActiveKey="/home" as="ul">
       <Nav.Item as="li">
@@ -11,17 +14,21 @@ const navigation = () => (
         </Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link class="navItem" href="/info//-LX1bWcQJbBAAAgieK3U">
+        <Nav.Link className="navItem" href="/info//-LX1bWcQJbBAAAgieK3U">
           Info
         </Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link class="navItem" href="/post/new">
+        <Nav.Link className="navItem" href="/post/new">
           Post
         </Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link class="navItem" href="">
+        <Nav.Link
+          className="navItem"
+          onClick={() => dispatch(loggingOut())}
+          href="/logout"
+        >
           Logout
         </Nav.Link>
       </Nav.Item>
@@ -29,4 +36,10 @@ const navigation = () => (
   </div>
 );
 
-export default navigation;
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     onLogout: () => dispatch(actions.logout())
+//   };
+// };
+
+export default connect()(navigation);

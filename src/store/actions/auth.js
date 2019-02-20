@@ -22,6 +22,7 @@ export const authFail = err => {
 };
 
 export const logout = () => {
+  console.log("logout");
   return {
     type: actionTypes.AUTH_LOGOUT
   };
@@ -50,5 +51,12 @@ export const authState = () => {
         dispatch(logout());
       }
     });
+  };
+};
+
+export const loggingOut = () => {
+  return dispatch => {
+    auth.signOut();
+    dispatch(logout());
   };
 };
