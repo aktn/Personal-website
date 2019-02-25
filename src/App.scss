@@ -33,3 +33,26 @@
     transform: rotate(360deg);
   }
 }
+
+$font-style2: "Courier New", Courier, "Lucida Sans Typewriter",
+  "Lucida Typewriter", monospace;
+
+.wrapper {
+  overflow: hidden;
+}
+
+.navigation {
+  font-size: 35px;
+  font-family: $font-style2;
+  float: right;
+  z-index: 999;
+  position: relative;
+  a {
+    padding: 50px 30px 0 0;
+    display: block;
+    color: #232323;
+    &:hover {
+      text-decoration: line-through;
+    }
+  }
+}

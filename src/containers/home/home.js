@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import "./home.scss";
-import Project from "./../../components/project/project";
 
 class Home extends Component {
   componentDidMount() {
@@ -29,22 +28,29 @@ class Home extends Component {
 
     return (
       <div className="home-info">
-        <div className="home-info__social">
+        {/* <div className="home-info__social">
           <a href="https://github.com/aktn">
-            <i className="fa fa-linkedin-square" />
+            LinkedIn
           </a>
           <a href="https://github.com/aktn">
-            <i className="fa fa-github" />
+            Github
           </a>
-        </div>
+          <a href="#projects">Projects</a>
+        </div> */}
+
         <div className="home-info__about">
-          <h2>{infoTitle}</h2>
-          <p>{aboutMe}</p>
+          <div className="home-info__about__wrap">
+            <h1>"{infoTitle}"</h1>
+            <p>{aboutMe}</p>
+          </div>
         </div>
 
         <div className="home-project">
           <div className="home-project__container">
-            <h3>Main projects I have been building</h3>
+            <h3>
+              <a name="projects" />
+              Main projects I have been building
+            </h3>
             {projectsList}
             <h5>
               Other work can be found on{" "}

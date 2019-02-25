@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  withRouter,
+  Redirect
+} from "react-router-dom";
 
-import "./App.css";
+import "./App.scss";
 
 import Info from "./containers/info/info";
 import PostForm from "./containers/post/postForm";
@@ -12,6 +18,7 @@ import ProjectForm from "./containers/project/projectForm";
 import Login from "./containers/login/login";
 import * as actions from "./store/actions/index";
 import Navigation from "./components/navigation/navigation";
+import ProjectList from "./containers/home/projectList/projectList";
 
 class App extends Component {
   componentDidMount() {
@@ -20,31 +27,48 @@ class App extends Component {
 
   render() {
     let routes = (
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/" exact component={Home} />
-      </Switch>
+      <Router>
+        <div class="wrapper">
+          <div class="navigation">
+            <a href="https://github.com/aktn">
+              {/* <i className="fa fa-linkedin-square" /> */}
+              LinkedIn
+            </a>
+            <a href="https://github.com/aktn">
+              {/* <i className="fa fa-github" /> */}
+              Github
+            </a>
+            <a href="http://localhost:3000/projects">
+              {/* <i className="fa fa-github" /> */}
+              Projects
+            </a>
+          </div>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/projects" component={ProjectList} />
+            <Route path="/" exact component={Home} />
+          </Switch>
+        </div>
+      </Router>
     );
 
     if (this.props.isAuthenticated) {
       routes = (
-        <Switch>
-          <Route path="/post/new" component={PostForm} />
-          <Route path="/post/posts" component={PostsList} />
-          <Route path="/post/:id" component={PostForm} />
-          <Route path="/info/:id" component={Info} />
-          <Route path="/project/new" component={ProjectForm} />
-          <Route path="/project/:id" component={ProjectForm} />
-          <Redirect to="/" />
-        </Switch>
+        <div>
+          <Navigation />
+          <Switch>
+            <Route path="/post/new" component={PostForm} />
+            <Route path="/post/posts" component={PostsList} />
+            <Route path="/post/:id" component={PostForm} />
+            <Route path="/info/:id" component={Info} />
+            <Route path="/project/new" component={ProjectForm} />
+            <Route path="/project/:id" component={ProjectForm} />
+            <Redirect to="/" />
+          </Switch>
+        </div>
       );
     }
-    return (
-      <div className="App">
-        <Navigation />
-        {routes}
-      </div>
-    );
+    return <div className="App">{routes}</div>;
   }
 }
 
