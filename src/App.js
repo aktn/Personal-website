@@ -19,6 +19,7 @@ import Login from "./containers/login/login";
 import * as actions from "./store/actions/index";
 import Navigation from "./components/navigation/navigation";
 import ProjectList from "./containers/home/projectList/projectList";
+import Sidebar from "./components/sidebar/sidebar";
 
 class App extends Component {
   componentDidMount() {
@@ -29,20 +30,7 @@ class App extends Component {
     let routes = (
       <Router>
         <div class="wrapper">
-          <div class="navigation">
-            <a href="https://github.com/aktn">
-              {/* <i className="fa fa-linkedin-square" /> */}
-              LinkedIn
-            </a>
-            <a href="https://github.com/aktn">
-              {/* <i className="fa fa-github" /> */}
-              Github
-            </a>
-            <a href="http://localhost:3000/projects">
-              {/* <i className="fa fa-github" /> */}
-              Projects
-            </a>
-          </div>
+          <Sidebar />
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/projects" component={ProjectList} />

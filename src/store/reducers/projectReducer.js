@@ -2,7 +2,8 @@ import * as actionTypes from "./../actions/actionTypes";
 
 const initialState = {
   project: [],
-  loaded: false
+  loaded: false,
+  error: false
 };
 
 export default function projects(state = initialState, action = {}) {

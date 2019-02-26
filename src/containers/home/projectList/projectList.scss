@@ -1,0 +1,20 @@
+.projectList {
+  background: #fff;
+  min-height: 100vh;
+  padding-bottom: 150px;
+  &__container {
+    display: table;
+    padding-left: 50px;
+    width: 50%;
+    font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New,
+      monospace;
+    overflow: hidden;
+
+    &__wrap {
+      display: table-cell;
+      margin: 0;
+      vertical-align: middle;
+    }
+  }
+  color: #232323;
+}
