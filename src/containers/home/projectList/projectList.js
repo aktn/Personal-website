@@ -39,7 +39,7 @@ class projectList extends Component {
             </h3>
             {projectsList}
             <h5>
-              Other work can be found on{" "}
+              Other small work can be found on{" "}
               <a href="https://github.com/aktn">Github</a>.
             </h5>
           </div>

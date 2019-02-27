@@ -20,6 +20,7 @@ import * as actions from "./store/actions/index";
 import Navigation from "./components/navigation/navigation";
 import ProjectList from "./containers/home/projectList/projectList";
 import Sidebar from "./components/sidebar/sidebar";
+import PageNotFound from "./components/pageNotFound/pageNotFound";
 
 class App extends Component {
   componentDidMount() {
@@ -29,12 +30,13 @@ class App extends Component {
   render() {
     let routes = (
       <Router>
-        <div class="wrapper">
+        <div className="wrapper">
           <Sidebar />
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/projects" component={ProjectList} />
             <Route path="/" exact component={Home} />
+            <Route path="/a" component={PageNotFound} />
           </Switch>
         </div>
       </Router>

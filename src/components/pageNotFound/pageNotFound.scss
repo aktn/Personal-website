@@ -1,0 +1,29 @@
+.pageNotFound {
+  background: #fff;
+  width: 100%;
+  padding-top: 25%;
+  padding-left: 15%;
+  position: absolute;
+  min-height: 100vh;
+  text-align: left;
+  overflow: hidden;
+}
+
+.background-image {
+  margin: 0 auto;
+}
+
+span {
+  font-weight: 800;
+  font-size: 20px;
+  padding-top: 50px;
+}
+
+@media (min-width: 300px) and (max-width: 800px) {
+  .pageNotFound {
+    padding-left: 10%;
+  }
+  span {
+    display: block;
+  }
+}
