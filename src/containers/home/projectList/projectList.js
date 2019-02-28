@@ -21,7 +21,11 @@ class projectList extends Component {
       Object.keys(projects).length > 0 ? (
         projects.map(project => (
           <div className="column" key={project.id}>
-            <div className="column__title">{project.title}</div>
+            <div className="column__title">
+              <a href={project.url} target="_blank">
+                {project.title}
+              </a>
+            </div>
             <div className="column__description">{project.description}</div>
           </div>
         ))
@@ -32,7 +36,7 @@ class projectList extends Component {
     return (
       <div className="projectList">
         <div className="projectList__container">
-          <div className="home-projectList__container__wrap">
+          <div className="projectList__container__wrap">
             <h3>
               <a name="projectList__projects" />
               Main projects I have been building
@@ -40,7 +44,10 @@ class projectList extends Component {
             {projectsList}
             <h5>
               Other small work can be found on{" "}
-              <a href="https://github.com/aktn">Github</a>.
+              <a href="https://github.com/aktn" target="_blank">
+                Github
+              </a>
+              .
             </h5>
           </div>
         </div>

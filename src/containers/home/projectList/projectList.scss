@@ -4,17 +4,63 @@
   padding-bottom: 150px;
   &__container {
     display: table;
+    padding-top: 50px;
     padding-left: 50px;
     width: 50%;
     font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New,
       monospace;
     overflow: hidden;
-
-    &__wrap {
-      display: table-cell;
-      margin: 0;
-      vertical-align: middle;
-    }
   }
   color: #232323;
+}
+
+h3 {
+  font-size: 250%;
+  padding-bottom: 25px;
+}
+
+h5 {
+  font-size: 15px;
+}
+
+.column {
+  float: left;
+  width: 100%;
+  text-align: left;
+  &__title {
+    color: #42ca4d;
+    font-size: 20px;
+    padding-bottom: 2vh;
+  }
+  &__description {
+    color: #232323;
+    font-size: 16px;
+    padding-bottom: 4vh;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+  .projectList {
+    &__container {
+      width: 100%;
+      padding: 0 27px;
+    }
+  }
+  h3 {
+    font-size: 200%;
+    padding: 20px 0;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .projectList {
+    &__container {
+      width: 100%;
+      padding: 0 27px;
+    }
+  }
+  h3 {
+    padding: 20px 0;
+    font-size: 250%;
+  }
 }

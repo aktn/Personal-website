@@ -4,9 +4,11 @@ import "./sidebar.scss";
 const sidebar = () => {
   return (
     <div className="sidebar">
-      <a href="https://github.com/aktn">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/aung-khant-thet-naing-82303077">
+        LinkedIn
+      </a>
       <a href="https://github.com/aktn">Github</a>
-      <a href="http://localhost:3000/projects">Projects</a>
+      <a href="https://aungthet.com/projects">Projects</a>
     </div>
   );
 };
