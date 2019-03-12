@@ -4,7 +4,7 @@
   padding-bottom: 150px;
   &__container {
     display: table;
-    padding-top: 50px;
+    //  padding-top: 50px;
     padding-left: 50px;
     width: 50%;
     font-family: Menlo, Monaco, Consolas, Liberation Mono, Courier New,
@@ -27,14 +27,29 @@ h5 {
   float: left;
   width: 100%;
   text-align: left;
+  animation: moveInLeft 1s ease-out;
   &__title {
     color: #42ca4d;
     font-size: 20px;
     padding-bottom: 2vh;
+    a:visited {
+      text-decoration: none;
+    }
+    a {
+      &:hover {
+        opacity: 2;
+        text-decoration: none;
+      }
+    }
   }
   &__description {
     color: #232323;
     font-size: 16px;
+    padding-bottom: 1vh;
+  }
+  &__env {
+    font-size: 14px;
+    color: #504f4f;
     padding-bottom: 4vh;
   }
 }
@@ -50,6 +65,9 @@ h5 {
     font-size: 200%;
     padding: 20px 0;
   }
+  .backBtn {
+    display: none !important;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
@@ -62,5 +80,31 @@ h5 {
   h3 {
     padding: 20px 0;
     font-size: 250%;
+  }
+  .backBtn {
+    display: none !important;
+    color: red;
+  }
+}
+
+.backBtn {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
   }
 }

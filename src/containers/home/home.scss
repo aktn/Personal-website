@@ -16,6 +16,7 @@
     width: 50%;
     //display: inline-block;
     display: table;
+    animation: moveInLeft 1s ease-out;
 
     &__wrap {
       display: table-cell;
@@ -109,5 +110,21 @@
         margin-bottom: 0px;
       }
     }
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
   }
 }

@@ -9,6 +9,10 @@ class projectList extends Component {
     this.props.onInitProject();
   }
 
+  static contextTypes = {
+    router: () => true
+  };
+
   render() {
     let projectsList;
     let projects;
@@ -27,14 +31,31 @@ class projectList extends Component {
               </a>
             </div>
             <div className="column__description">{project.description}</div>
+            <div className="column__env">Main environment: {project.env}</div>
           </div>
         ))
       ) : (
         <Spinner />
       );
 
+    let gitLink;
+    if (projectsList.length > 0) {
+      gitLink = (
+        <h5>
+          Other small work can be found on{" "}
+          <a href="https://github.com/aktn" target="_blank">
+            Github
+          </a>
+          .
+        </h5>
+      );
+    }
+
     return (
       <div className="projectList">
+        <span className="backBtn" onClick={this.context.router.history.goBack}>
+          &#8592;
+        </span>
         <div className="projectList__container">
           <div className="projectList__container__wrap">
             <h3>
@@ -42,13 +63,7 @@ class projectList extends Component {
               Main projects I have been building
             </h3>
             {projectsList}
-            <h5>
-              Other small work can be found on{" "}
-              <a href="https://github.com/aktn" target="_blank">
-                Github
-              </a>
-              .
-            </h5>
+            {gitLink}
           </div>
         </div>
       </div>

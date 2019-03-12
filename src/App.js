@@ -29,14 +29,18 @@ class App extends Component {
 
   render() {
     let routes = (
-      <Router>
+      <Router basename="/">
         <div className="wrapper">
           <Sidebar />
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/projects" component={ProjectList} />
-            <Route path="/" exact component={Home} />
-            <Route path="/a" component={PageNotFound} />
+            <Route
+              exact
+              path={process.env.PUBLIC_URL + "/login"}
+              component={Login}
+            />
+            <Route exact path="/projects" component={ProjectList} />
+            <Route exact path="/" component={Home} />
+            <Route exact component={PageNotFound} />
           </Switch>
         </div>
       </Router>
@@ -46,15 +50,17 @@ class App extends Component {
       routes = (
         <div>
           <Navigation />
-          <Switch>
-            <Route path="/post/new" component={PostForm} />
-            <Route path="/post/posts" component={PostsList} />
-            <Route path="/post/:id" component={PostForm} />
-            <Route path="/info/:id" component={Info} />
-            <Route path="/project/new" component={ProjectForm} />
-            <Route path="/project/:id" component={ProjectForm} />
-            <Redirect to="/" />
-          </Switch>
+          <Router basename="/">
+            <Switch>
+              <Route path="/post/new" component={PostForm} />
+              <Route path="/post/posts" component={PostsList} />
+              <Route path="/post/:id" component={PostForm} />
+              <Route path="/info/:id" component={Info} />
+              <Route path="/project/new" component={ProjectForm} />
+              <Route path="/project/:id" component={ProjectForm} />
+              <Redirect to="/" />
+            </Switch>
+          </Router>
         </div>
       );
     }
@@ -63,7 +69,6 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.user);
   return {
     isAuthenticated: state.user.user
   };
