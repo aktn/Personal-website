@@ -20,7 +20,7 @@ export default function posts(state = initialState, action = {}) {
     case actionTypes.POST_FETCHED:
       return { ...state, post: action.post };
     case actionTypes.SET_POSTS:
-      return action.posts;
+      return action;
     default:
       return state;
   }

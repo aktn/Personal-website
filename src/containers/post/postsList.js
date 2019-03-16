@@ -8,24 +8,47 @@ class PostsList extends Component {
     this.props.fetchPosts();
   }
 
+  updatePost(id) {
+    console.log(id + "update");
+  }
+
+  deletePost(id) {
+    console.log(id + "delete");
+  }
+
   render() {
     const emptyMessage = <p>There are no posts yet.</p>;
 
     let postsList = [];
-    if (this.props && this.props.posts.length > 0) {
+    if (this.props.posts) {
       postsList = this.props.posts.map(post => (
-        <Post key={post.id} title={post.title} body={post.body} />
+        <Post
+          key={post.id}
+          id={post.id}
+          title={post.title}
+          body={post.body}
+          onUpdate={this.updatePost}
+          onDelete={this.deletePost}
+        />
       ));
     }
+
+    const postForm__container = {
+      margin: "30px 60px"
+    };
+
     return (
-      <div>{this.props.posts.length === 0 ? emptyMessage : postsList}</div>
+      <div style={postForm__container}>
+        {this.props.posts === 0 ? emptyMessage : postsList}
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state.post.posts);
   return {
-    posts: state.post
+    posts: state.post.posts
   };
 };
 

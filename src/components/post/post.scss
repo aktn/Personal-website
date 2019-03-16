@@ -1,0 +1,33 @@
+.postBlock {
+  background-color: aliceblue;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 80%;
+  font: inherit;
+  font-size: 14px;
+
+  .postContent {
+    width: 80%;
+    display: inline-block;
+    margin-right: 50px;
+
+    &--title {
+      font-weight: 700;
+    }
+  }
+  .postBtn {
+    display: inline-block;
+    margin-bottom: 10px;
+    &--delete {
+      display: block;
+      width: 80px;
+      padding: 5px 10px;
+      margin-top: 10px;
+    }
+    &--update {
+      display: block;
+      width: 80px;
+      padding: 5px 10px;
+    }
+  }
+}
