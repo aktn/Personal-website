@@ -3,13 +3,12 @@ import "./navigation.scss";
 import React from "react";
 import { connect } from "react-redux";
 import { loggingOut } from "./../../store/actions/index";
-import * as actions from "./../../store/actions/index";
 
 const navigation = ({ dispatch }) => (
   <div className="nav">
     <Nav defaultActiveKey="/home" as="ul">
       <Nav.Item as="li">
-        <Nav.Link class="navItem" href="/project/new">
+        <Nav.Link className="navItem" href="/project/new">
           Project
         </Nav.Link>
       </Nav.Item>

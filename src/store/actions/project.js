@@ -1,5 +1,6 @@
 import axios from "../../axios-firebase";
 import * as actionTypes from "./actionTypes";
+import firebase from "firebase";
 
 export const setProjects = projects => {
   return {
@@ -46,14 +47,17 @@ export const fetchProjects = () => {
 
 export const saveProject = data => {
   return dispatch => {
-    axios
-      .post("/project.json", data)
-      .then(repsonse => {
-        dispatch(addProject(repsonse.project));
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log(user.uid);
+      axios
+        .post("/project/" + user.uid + ".json", data)
+        .then(repsonse => {
+          dispatch(addProject(repsonse.project));
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    });
   };
 };
 

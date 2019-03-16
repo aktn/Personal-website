@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Input from "./../../components/UI/Input/Input";
 import Button from "./../../components/UI/button/button";
 import * as actions from "../../store/actions/index";
+import "./login.scss";
 
 class Login extends Component {
   state = {
@@ -120,8 +121,8 @@ class Login extends Component {
     }
 
     return (
-      <div>
-        <h3 style={{ textAlign: "center" }}>Login</h3>
+      <div className="container">
+        <h3>Login</h3>
         <form onSubmit={this.handleSubmit}>
           {form}
           <Button disabled={!this.state.formIsValid}>Login</Button>

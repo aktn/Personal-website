@@ -1,5 +1,4 @@
 import React from "react";
-import classes from "./Input.scss";
 
 const Input = props => {
   let cssClasses = ["input"];

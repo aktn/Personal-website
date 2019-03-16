@@ -26,7 +26,7 @@ class projectList extends Component {
         projects.map(project => (
           <div className="column" key={project.id}>
             <div className="column__title">
-              <a href={project.url} target="_blank">
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
                 {project.title}
               </a>
             </div>
@@ -43,7 +43,11 @@ class projectList extends Component {
       gitLink = (
         <h5>
           Other small work can be found on{" "}
-          <a href="https://github.com/aktn" target="_blank">
+          <a
+            href="https://github.com/aktn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Github
           </a>
           .
@@ -58,10 +62,7 @@ class projectList extends Component {
         </span>
         <div className="projectList__container">
           <div className="projectList__container__wrap">
-            <h3>
-              <a name="projectList__projects" />
-              Main projects I have been building
-            </h3>
+            <h3>Main projects I have been building</h3>
             {projectsList}
             {gitLink}
           </div>

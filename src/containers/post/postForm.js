@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
-import Input from "../../components/UI/Input/Input";
-import { savePost } from "../../store/actions/post";
 import * as actions from "../../store/actions/index";
 
 class PostForm extends React.Component {

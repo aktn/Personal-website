@@ -17,3 +17,9 @@
   border: 1px solid red;
   background-color: #fda49a;
 }
+
+@media (min-width: 300px) and (max-width: 900px) {
+  .input {
+    width: 100%;
+  }
+}

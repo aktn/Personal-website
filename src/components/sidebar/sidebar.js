@@ -8,10 +8,15 @@ const sidebar = () => {
       <a
         href="https://www.linkedin.com/in/aung-khant-thet-naing-82303077"
         target="_blank"
+        rel="noopener noreferrer"
       >
         LinkedIn
       </a>
-      <a href="https://github.com/aktn" target="_blank">
+      <a
+        href="https://github.com/aktn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Github
       </a>
       <Link to={process.env.PUBLIC_URL + "projects"}>Projects</Link>

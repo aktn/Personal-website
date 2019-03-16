@@ -64,6 +64,19 @@ class ProjectForm extends Component {
         validation: {
           required: false
         }
+      },
+      env: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Technologies"
+        },
+        value: this.props.project ? this.props.project.env : "",
+        touched: false,
+        valid: false,
+        validation: {
+          required: true
+        }
       }
     },
     formIsValid: false
@@ -147,9 +160,13 @@ class ProjectForm extends Component {
       </form>
     );
 
+    const projectForm__container = {
+      margin: "30px 60px"
+    };
+
     return (
-      <div>
-        <h3 style={{ textAlign: "center" }}>Project Form</h3>
+      <div style={projectForm__container}>
+        <h3>Project Form</h3>
         {form}
       </div>
     );
