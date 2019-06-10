@@ -18,9 +18,15 @@ export default function posts(state = initialState, action = {}) {
         loading: false
       };
     case actionTypes.POST_FETCHED:
-      return { ...state, post: action.post };
+      return {
+        ...state,
+        post: action.post
+      };
     case actionTypes.SET_POSTS:
-      return action;
+      return {
+        ...state,
+        post: action.posts
+      };
     default:
       return state;
   }

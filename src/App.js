@@ -10,7 +10,7 @@ import {
 
 import "./App.scss";
 
-import Info from "./containers/info/info";
+import Info from "./containers/Info/Info";
 import PostForm from "./containers/post/postForm";
 import PostsList from "./containers/post/postsList";
 import Home from "./containers/home/home";
@@ -31,7 +31,6 @@ class App extends Component {
     let routes = (
       <Router basename="/">
         <div className="wrapper">
-          <Sidebar />
           <Switch>
             <Route
               exact

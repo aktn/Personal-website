@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import "./home.scss";
 import Spinner from "../../components/UI/spinner/spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 class Home extends Component {
   componentDidMount() {
@@ -12,7 +14,7 @@ class Home extends Component {
 
   render() {
     let aboutMe = (
-      <div className="home-info__about__wrap">
+      <div className="home-info__wrap">
         <Spinner />
       </div>
     );
@@ -22,18 +24,30 @@ class Home extends Component {
 
     if (infoDescription && infoTitle) {
       aboutMe = (
-        <div className="home-info__about__wrap">
-          <h1>"{infoTitle}"</h1>
-          <p>{infoDescription.replace(/-b/gi, "\n")}</p>
+        <div>
+          <div className="title">
+            <h1>{infoTitle}</h1>
+          </div>
+          <div className="home-info__wrap">
+            <p>{infoDescription.replace(/-b/gi, "\n")}</p>
+            <div className="social">
+              <p style={{ display: "inline-block" }}>Find me on:</p>
+              <a href="https://github.com/aktn" target="_blank">
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
+              <a
+                href="https://linkedin.com/in/aung-khant-thet-naing-82303077/"
+                target="_blank"
+              >
+                <FontAwesomeIcon icon={faLinkedin} />
+              </a>
+            </div>
+          </div>
         </div>
       );
     }
 
-    return (
-      <div className="home-info">
-        <div className="home-info__about">{aboutMe}</div>
-      </div>
-    );
+    return <div className="home-info">{aboutMe}</div>;
   }
 }
 
@@ -47,7 +61,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitInfo: () => dispatch(actions.fetchInfo("-LX1bWcQJbBAAAgieK3U")),
+    onInitInfo: () => dispatch(actions.fetchInfo()),
     onInitProject: () => dispatch(actions.fetchProjects())
   };
 };

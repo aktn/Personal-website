@@ -10,6 +10,7 @@ export default function projects(state = initialState, action = {}) {
   switch (action.type) {
     case actionTypes.SET_PROJECTS:
       return {
+        ...state,
         project: action.projects
       };
 

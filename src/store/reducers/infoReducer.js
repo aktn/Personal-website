@@ -2,7 +2,8 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   info: [],
-  loading: false
+  loading: false,
+  error: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,7 +21,8 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_INFO_FAIL:
       return {
         ...state,
-        loading: false
+        loading: false,
+        error: true
       };
     default:
       return state;

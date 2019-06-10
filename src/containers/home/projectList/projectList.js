@@ -14,14 +14,13 @@ class projectList extends Component {
   };
 
   render() {
-    let projectsList;
     let projects;
 
     if (this.props.project) {
       projects = this.props.project;
     }
 
-    projectsList =
+    let projectsList =
       Object.keys(projects).length > 0 ? (
         projects.map(project => (
           <div className="column" key={project.id}>
